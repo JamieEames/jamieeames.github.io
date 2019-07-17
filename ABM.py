@@ -1,84 +1,88 @@
 import random
+import operator
+import matplotlib.pyplot
 
-#creates variables y0/x0
-#and assigns ramdom start values between 0 and 99
-y0 = random.randint(1,99) 
-x0 = random.randint(1,99) 
+#Agents List
+agents = []
 
-#generates a ramdon number between 0 and 1 and
-#makes it the value of varible random_number
-#random_number = random.random() #this function could have been written directly into the if function below
+agents.append([random.randint(0,99),random.randint(0,99)]) #adds x0 and y0 to agents
 
-#Checks the value of random_number. Where random_number
-#is less than 0.5, 1 is added to y0
+
+#Generates a ramdon number and checks the value
+#if less than 0.5, 1 is added to y0
 #otherwise 1 is subtracted from y0
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    y0 += 1
+    agents[0][0] += 1
 else:
-    y0 -=1
+    agents[0][0] -=1
 
 #above codeblock repeated for x0
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    x0 += 1
+    agents[0][1] += 1
 else:
-    x0 -=1
-    
-print(y0,x0)
+    agents[0][1] -=1
 
 #repeat step
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    y0 += 1
+    agents[0][0] += 1
 else:
-    y0 -=1
+    agents[0][0] -=1
 
 #above codeblock repeated for x0
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    x0 += 1
+    agents[0][1] += 1
 else:
-    x0 -=1
-    
-print(y0,x0)
-
+    agents[0][1] -=1
 
 #creates variables y0/x0
 #and assigns ramdom start values between 0 and 99
-y1 = random.randint(1,99) 
-x1 = random.randint(1,99) 
+agents.append([random.randint(0,99),random.randint(0,99)]) #adds x0 and y0 to agents
 
-#generates a ramdon number between 0 and 1 and
-#makes it the value of varible random_number
-#random_number = random.random() #this function could have been written directly into the if function below
-
-#Checks the value of random_number. Where random_number
-#is less than 0.5, 1 is added to y0
-#otherwise 1 is subtracted from y0
+#Generates a ramdon number and checks the value
+#if less than 0.5, 1 is added to y1
+#otherwise 1 is subtracted from y1
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    y1 += 1
+    agents[1][0] += 1
 else:
-    y1 -=1
+    agents[1][0] -=1
 
 #above codeblock repeated for x0
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    x1 += 1
+    agents[1][1] += 1
 else:
-    x1 -=1
-    
-print(y0,x0)
+    agents[1][1] -=1
 
 #repeat step
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    y1 += 1
+    agents[1][0] += 1
 else:
-    y1 -=1
+    agents[1][0] -=1
 
 #above codeblock repeated for x0
 if random.random() < 0.5: #random.random() replaces ramdon_number
-    x1 += 1
+    agents[1][1] += 1
 else:
-    x1 -=1
+    agents[1][1] -=1
     
-print(y0,x0, y1,x1)
+print(agents)
 
 #Calculate distance between xy0/xy1
-distance = (((y0-y1)**2) + ((x0-x1)**2))**0.5
+distance = (((agents[0][0]-agents[1][0])**2) + ((agents[0][1]-agents[1][1])**2))**0.5
 print(distance)
+
+#Print the coord pair with the highest index 1 (X-Coord east) value
+
+###
+eastmost = max(agents, key=operator.itemgetter(1))
+###########All below may need altering if the tutor says so, then revert to plotting each point.#########
+noteastmost = agents
+del noteastmost[noteastmost.index(eastmost)]
+notestmostsingle = noteastmost[0]
+
+
+###Plots points, with the most Eastern in Red
+matplotlib.pyplot.ylim(0, 99)
+matplotlib.pyplot.xlim(0, 99)
+matplotlib.pyplot.scatter(notestmostsingle[1],notestmostsingle[0])
+matplotlib.pyplot.scatter(eastmost[1], eastmost[0], color='red')
+matplotlib.pyplot.show()

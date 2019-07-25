@@ -8,7 +8,7 @@ def distance_between(agents_row_a, agents_row_b):
                 + ((agents_row_a.y - agents_row_b.y)**2))**0.5
 
 #Number of Agents Variable
-num_of_agents = 10 
+num_of_agents = 10
 num_of_itterations = 100
 
 #Agents List

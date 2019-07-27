@@ -16,9 +16,12 @@ class Agent:
 #        else:
 #            self.y = (self.y - 1) % 100
     
-    def  __init__(self):
+    def  __init__(self, environment, store=0):
            self._x = random.randint(0,99)
            self._y = random.randint(0,99)
+           self.environment = environment
+           self.store = 0
+           
        
     def get_x(self):
         return self._x
@@ -45,3 +48,19 @@ class Agent:
             self.y = (self.y + 1) % 100
         else:
             self.y = (self.y - 1) % 100
+            
+    def eat (self):
+        if self.environment[self.y][self.x] > 10:
+            self.environment[self.y][self.x] -= 10
+            self.store += 10
+        else:
+            self.store += self.environment[self.y][self.x]
+            self.environment[self.y][self.x] = 0
+    
+    def vomit(self):
+        if self.store > 100:
+            self.environment[self.y][self.x] += self.store
+            self.store = 0
+            
+
+            

@@ -24,8 +24,8 @@ matplotlib.pyplot.imshow(environment)
 matplotlib.pyplot.show()
 
 #Number of Agents Variable
-num_of_agents = 10
-num_of_itterations = 999
+num_of_agents = 100
+num_of_itterations = 1000
 
 #Agents List
 agents = []
@@ -68,3 +68,6 @@ for i in range(num_of_agents):
 writestore.writerow(storelist)
     
 agentstore.close()
+
+for i in range(num_of_agents):
+    print(agents[i], end='\n')

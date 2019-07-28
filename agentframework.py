@@ -62,5 +62,7 @@ class Agent:
             self.environment[self.y][self.x] += self.store
             self.store = 0
             
-
-            
+    def __str__(self):
+        return "Environment=" + str(self.environment[self.y][self.x]) + " ,store=" + str(self.store)
+    
+    

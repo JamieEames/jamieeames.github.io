@@ -1,16 +1,20 @@
+"""Class Module for ABM
+Created by Jamie Eames
+Date of Last Update: 28/07/2019"""
+
 import random
 
-#The Class controlling all agent behviours
 class Agent: 
-    #Initialises instances of Agent class, sets up y,x,environment and store
-    #to be passed from the call
+    """The Class controlling all agent behviours"""
     def  __init__(self, y, x, environment, store=0):
+        """Initialises instances of Agent class, sets up y,x,environment
+        and store to be passed from the call"""
         self._x = x
         self._y = y
         self.environment = environment
         self.store = store
            
-    #Sets up x/y properties to conceal _x,_y in from the caller 
+    """Sets up x/y properties to conceal _x,_y in from the caller """
     def get_x(self):
         return self._x
     def get_y(self):
@@ -22,9 +26,10 @@ class Agent:
     x = property(get_x, set_x)
     y = property(get_y, set_y)
     
-    #Controls agent movement, recieves movement limitation from the call
-    #which controls the boundaries for edge effect handling
+   
     def move(self, yrange, xrange):
+        """Controls agent movement, recieves movement limitation from the call
+        which controls the boundaries for edge effect handling"""
         yrange = yrange
         xrange = xrange
         if random.random() < 0.5:
@@ -36,8 +41,9 @@ class Agent:
         else:
             self.y = (self.y - 1) % yrange
     
-    #Controls eating behaviour
+    
     def eat (self):
+        """Controls eating behaviour"""
         #Default is for agents to eat n units per itteration, adding those
         #units to it's store and subtractng them from the enviroment location
         if self.environment[self.y][self.x] > 10:

@@ -1,12 +1,17 @@
+"""ABM
+Created by Jamie Eames
+Date of Last Update: 28/07/2019"""
+
+
 import random
 import matplotlib.pyplot
 import agentframework
 import csv
 
-#Sets up the function to calulate the distance between each agent
 def distance_between(agents_row_a, agents_row_b):
-        return (((agents_row_a.x - agents_row_b.x)**2)\
-                + ((agents_row_a.y - agents_row_b.y)**2))**0.5
+    """Sets up the function to calulate the distance between each agent"""
+    return (((agents_row_a.x - agents_row_b.x)**2)\
+    + ((agents_row_a.y - agents_row_b.y)**2))**0.5
 
 #Reads in an environment csv file, and transforms it into a 2D list
 data = open('in.txt', newline='')
@@ -24,7 +29,7 @@ data.close()
 xrange = len(rowlist)-1
 yrange = len(environment)-1
 
-#Number of Agents Variable
+#Number of Agents Variable and itterations 
 num_of_agents = 10
 num_of_itterations = 100
 
@@ -43,7 +48,7 @@ for j in range(num_of_itterations):
         agents[i].eat()
         agents[i].vomit()
 
-###Plots points and envronment in final arranngement
+#Plots points and envronment in final arranngement
 matplotlib.pyplot.ylim(0, yrange)
 matplotlib.pyplot.xlim(0, xrange)
 matplotlib.pyplot.imshow(environment)

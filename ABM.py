@@ -7,6 +7,7 @@ import random
 import matplotlib.pyplot
 import agentframework
 import csv
+import sys
 
 def distance_between(agents_row_a, agents_row_b):
     """Sets up the function to calulate the distance between each agent"""
@@ -30,8 +31,9 @@ xrange = len(rowlist)-1
 yrange = len(environment)-1
 
 #Number of Agents Variable and itterations 
-num_of_agents = 10
+num_of_agents = 100
 num_of_itterations = 100
+neighbourhood = 20
 
 #Agents List
 agents = []
@@ -39,14 +41,17 @@ agents = []
 #Generates a number of agents in random locations
 for i in range(num_of_agents):
     agents.append(agentframework.Agent(random.randint(0,yrange)\
-    , random.randint(0,xrange), environment)) 
-   
+    , random.randint(0,xrange), environment, agents, neighbourhood)) 
+
 #Moves each agent a number of times
 for j in range(num_of_itterations):
-    for i in range(num_of_agents): 
+    for i in range(num_of_agents):
+        random.shuffle(agents)
         agents[i].move(yrange, xrange)
         agents[i].eat()
-        agents[i].vomit()
+        agents[i].share_with_neighbours(neighbourhood)
+#        agents[i].vomit()
+    print(j)
 
 #Plots points and envronment in final arranngement
 matplotlib.pyplot.ylim(0, yrange)

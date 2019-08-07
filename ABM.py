@@ -1,6 +1,6 @@
 """ABM
 Created by Jamie Eames
-Date of Last Update: 28/07/2019"""
+Date of Last Update: 07/08/2019"""
 
 import sys
 import random
@@ -9,12 +9,13 @@ import agentframework
 import csv
 
 """For Testing Command Line Sys.Argv Functionality"""
-sys.argv[1:] = [None, None, None]
-sys.argv[1] = 10
-sys.argv[2] = 100
-sys.argv[3] = 30
+#sys.argv[1:] = [None,None,None,"True",None]
+#sys.argv[1] = 10
+#sys.argv[2] = 100
+#sys.argv[3] = 30
+#sys.argv[4] = "True"
 
-if len(sys.argv) == 4:
+if len(sys.argv) == 5:
     
 
     def distance_between(agents_row_a, agents_row_b):
@@ -75,13 +76,20 @@ if len(sys.argv) == 4:
     #        agents[i].vomit()
     
     #Plots points and envronment in final arranngement
-    matplotlib.pyplot.ylim(0, yrange)
-    matplotlib.pyplot.xlim(0, xrange)
-    matplotlib.pyplot.imshow(environment)
-    for i in range(num_of_agents):
-        matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
-    matplotlib.pyplot.show()
-    
+    mapshow = sys.argv[4]
+    if mapshow == "True":
+        matplotlib.pyplot.ylim(0, yrange)
+        matplotlib.pyplot.xlim(0, xrange)
+        matplotlib.pyplot.imshow(environment)
+        for i in range(num_of_agents):
+            matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
+        #Saves final environment to png, appending the number of agents in the
+        #run to the filename
+        matplotlib.pyplot.savefig('C:/GEOG5991/jamiee7.github.io/Images/agents-{}.png'.format(sys.argv[1]),  format="png")
+        #matplotlib.pyplot.show()
+       
+    else:
+        pass
     #calculates distance between each point
     for agents_row_a in agents:
         for agents_row_b in agents:

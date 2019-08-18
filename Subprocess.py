@@ -20,7 +20,7 @@ neighbourhood = "30"
 mapper = "True"
 times = []
 agentslist = []
-runs = 5
+runs = 10
 
 
 for i in range (0,runs):

@@ -1,6 +1,7 @@
 .flex-container {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-around;
 }
 		
 
@@ -9,28 +10,28 @@ body {
 	color: black;
 	text-align: justify;
 	font-family: "Verdana", Verdana, sans-serif;
-	font-size: 14;
+	font-size: 12px;
 	margin: 50;
 }
 	h1 {
 		color: red;
 		font-style: bold;
 		text-align: center;
-		font-size: 20;
+		font-size: 16px;
 		font-family: "Verdana", Verdana, sans-serif;
 	}
 	h2	{
 		color: red;
 		font-style: bold;
 		text-align: left;
-		font-size: 18;
+		font-size: 14px;
 		font-family: "Verdana", Verdana, sans-serif;
 	}
 	h3	{
 		color: red;
-		font-style: normal;
+		font-style: bolder;
 		text-align: center-left;
-		font-size: 16;
+		font-size: 12px;
 		font-family: "Verdana", Verdana, sans-serif;
 	}
 	img	{

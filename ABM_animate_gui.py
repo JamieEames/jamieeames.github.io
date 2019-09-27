@@ -1,7 +1,6 @@
 """ABM
 Created by Jamie Eames
 Date of Last Update: 07/08/2019"""
-import sys
 import random
 import matplotlib
 matplotlib.use('TkAgg')
@@ -20,7 +19,7 @@ neighbourhood = 30
 fig = matplotlib.pyplot.figure(figsize=(5, 5))
 ax = fig.add_axes([0, 0, 1, 1])
 carry_on = True
-    
+
 def distance_between(agents_row_a, agents_row_b):
     """Sets up the function to calulate the distance between each agent"""
     return (((agents_row_a.x - agents_row_b.x)**2)\

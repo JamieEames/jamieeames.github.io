@@ -52,3 +52,12 @@ body {
 		  overflow: auto; /* Enable scrolling if the sidenav has too much content */
 		}
 	}
+	figure {
+		display: table;
+	}
+	figcaption {
+			display: table-caption;
+			caption-side: bottom;
+		}
+	}
+	}
